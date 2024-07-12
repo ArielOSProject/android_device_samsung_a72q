@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2021 The LineageOS Project
+# Copyright (C) 2023 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,14 +12,13 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+#
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/lineage_a72q.mk \
-    $(LOCAL_DIR)/ariel_a72q.mk
+# Inherit Ariel device configuration
+$(call inherit-product, vendor/ariel/config/ariel_common.mk)
 
-COMMON_LUNCH_CHOICES := \
-    lineage_a72q-userdebug \
-    lineage_a72q-user \
-    lineage_a72q-eng \
-    ariel_a72q-userdebug \
-    ariel_a72q-eng
+# Inherit from Lineage configuration
+$(call inherit-product, device/samsung/a72q/lineage_a72q.mk)
+
+## Device identifier. This must come after all inclusions
+PRODUCT_NAME := ariel_a72q
